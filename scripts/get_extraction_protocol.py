@@ -149,7 +149,7 @@ if __name__ == '__main__':
 
     # Collect all potential fields
     if args.sf:
-        with open('data/potential_fields.txt', 'w') as f:
+        with open(outdir / 'potential_fields.txt', 'w') as f:
             for field in fields_num_rm:
                 f.write(f'{field}\n')
 
@@ -194,8 +194,8 @@ if __name__ == '__main__':
 
         # Get unique protocol counts and save to tsv
         print(f"Saving file for {key}.")
-        sample_outfile = outdir / f'data/sample_{key}_counts.tsv'
-        study_outfile = f'data/study_{key}_counts.tsv'
+        sample_outfile = outdir / f'sample_{key}_counts.tsv'
+        study_outfile = f'study_{key}_counts.tsv'
 
         sample_protocol_counts = metadata_df[f"{key}_naMerged"].value_counts()
         sample_protocol_counts.to_csv(sample_outfile, sep='\t')
