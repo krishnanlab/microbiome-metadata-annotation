@@ -42,6 +42,6 @@ $Z_{ij}^{terms} = \frac{A_{ij} - \mu_i}{\sigma_i};$ For all $i$ where $\max(A_i)
 $Z_{ij}^{samples} = \frac{A_{ij} - \mu_j}{\sigma_j};$ For all $j$ where $\max(A_j) \neq min(A_j)$
 
 Then,
-$$Z^{D}=\frac{Z^{terms} + Z^{samples}}{\sqrt{2}}$$
+$Z^{D}=\frac{Z^{terms} + Z^{samples}}{\sqrt{2}}$
 
 Here, $Z^{D}$ is the resulting matrix of added Z-scores for each similarity distribution of terms and samples.
