@@ -31,9 +31,7 @@ Authors: Parker Hicks
 Date: 2023-12-21
 """
 import sys
-
 sys.path.insert(1, "src")
-
 from tfidf_calculator import TfidfCalculator
 from argparse import ArgumentParser
 from tqdm import tqdm
@@ -43,9 +41,6 @@ import pandas as pd
 import numpy as np
 import time
 import re
-
-
-# TODO: probably should make this a class
 
 
 def underscore_to_colon(w1):
@@ -287,13 +282,6 @@ if __name__ == "__main__":
         type=str,
     )
     parser.add_argument(
-        "-om",
-        help="Ontology term mappings as tsv file. \
-            File should be formatted as id\tname (i.e. CL:0000024\toogonial cell).",
-        required=True,
-        type=str,
-    )
-    parser.add_argument(
         "-embeddings",
         help="/path/to/embedding_lookup_table.npz storing embeddings for each word across the corpora",
         required=False,
@@ -307,7 +295,12 @@ if __name__ == "__main__":
         choices=["none", "individual", "product"],
         type=str,
     )
-    parser.add_argument("-outdir", help="Path to outdir", required=True, type=str)
+    parser.add_argument(
+        "-outdir",
+        help="Path to outdir",
+        required=True,
+        type=str
+    )
     args = parser.parse_args()
     start = time.time()
 
@@ -323,8 +316,6 @@ if __name__ == "__main__":
 
     # Get name of the ontology term id
     term = args.term
-    onto_map = pd.read_csv(Path(args.om), delimiter="\t", header=0, dtype=str)
-    term_name = onto_map[onto_map["id"] == term]["name"].values[0]
 
     print("Calculating similarities to %s." % (term))
     sample_similarities = np.zeros((len(corpus)))
@@ -333,7 +324,7 @@ if __name__ == "__main__":
             enumerate(corpus), total=len(corpus), desc="Generating sample rankings..."
         ):
             sample_similarities[i] = compute_similarity(
-                term_name=term_name,
+                term_name=term,
                 description=desc,
                 words=words,
                 weight=args.weight,
@@ -349,7 +340,7 @@ if __name__ == "__main__":
         ):
             sample_tfidf = tfidf[i, :]
             sample_similarities[i] = compute_similarity(
-                term_name=term_name,
+                term_name=term,
                 description=desc,
                 words=words,
                 similarity_mat=cosine_similarity,
