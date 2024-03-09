@@ -29,7 +29,7 @@ For example, if the maximum similarity for $\mathbf{A_{i=1}}$ was found at colum
 #### Single_z
 We also apply two transformation methods: single_z and double_z. Where for single_Z we compute a zscore for each term across all sample  where for a matrix $\mathbf{A}$ with terms as rows and samples as columns:
 
-$$\mathbf{Z}_{ij}^{S} = \frac{\mathbf{A}_{ij} - \mu_i}{\sigma_i};$ For all $i$ where $\max(\mathbf{A}_i) \neq min(\mathbf{A}_i)$$
+$$Z_{ij}^{S} = \frac{A_{ij} - \mu_i}{\sigma_i};$ For all $i$ where $\max(A_i) \neq min(A_i)$$
 
 Here, $\mathbf{Z}^{S}$ is the resulting matrix of Z-scores for each similarity distribution of terms.
 
