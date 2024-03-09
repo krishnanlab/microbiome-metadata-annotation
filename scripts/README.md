@@ -31,17 +31,17 @@ We also apply two transformation methods: single_z and double_z. Where for singl
 
 $Z_{ij}^{S} = \frac{A_{ij} - \mu_i}{\sigma_i};$ For all $i$ where $\max(A_i) \neq min(A_i)$
 
-Here, $\mathbf{Z}^{S}$ is the resulting matrix of Z-scores for each similarity distribution of terms.
+Here, $Z^{S}$ is the resulting matrix of Z-scores for each similarity distribution of terms.
 
 
 #### Double_z
 For double_z, we combine the Z-score distributions of both the terms and the samples as:
 
-$$\mathbf{Z}_{ij}^{terms} = \frac{\mathbf{A}_{ij} - \mu_i}{\sigma_i};$ For all $i$ where $\max(\mathbf{A}_i) \neq min(\mathbf{A}_i)$$
+$Z_{ij}^{terms} = \frac{A_{ij} - \mu_i}{\sigma_i};$ For all $i$ where $\max(A_i) \neq min(A_i)$
 
-$$\mathbf{Z}_{ij}^{samples} = \frac{\mathbf{A}_{ij} - \mu_j}{\sigma_j};$ For all $j$ where $\max(\mathbf{A}_j) \neq min(\mathbf{A}_j)$$
+$Z_{ij}^{samples} = \frac{A_{ij} - \mu_j}{\sigma_j};$ For all $j$ where $\max(A_j) \neq min(A_j)$
 
 Then,
-$$\mathbf{Z}^{D}=\frac{\mathbf{Z}^{terms} + \mathbf{Z}^{samples}}{\sqrt{2}}$$
+$$Z^{D}=\frac{Z^{terms} + Z^{samples}}{\sqrt{2}}$$
 
-Here, $\mathbf{Z}^{D}$ is the resulting matrix of added Z-scores for each similarity distribution of terms and samples.
+Here, $Z^{D}$ is the resulting matrix of added Z-scores for each similarity distribution of terms and samples.
