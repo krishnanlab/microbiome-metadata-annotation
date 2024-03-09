@@ -4,7 +4,7 @@
 Given a matrix *__A__*, where each row is a word in a term and each column is a word in a description and each element is the cosine similarity between each term word and description word, respectively.
 We compute the average similarity between each term and description as:
 
-$$AvgSim = \frac{\sum_{i}^{m}max(A_i) + \sum_{i}^{n}max(A_j)}{m+n}$$
+$$AvgSim = \frac{\sum_{i}^{m} max(A_i) + \sum_{i}^{n} max(A_j)}{m+n}$$
 
 ------------------------
 ### Weighted similarities
