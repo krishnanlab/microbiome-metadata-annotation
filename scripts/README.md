@@ -2,7 +2,7 @@
 
 ### Average similarity
 Given a matrix *__A__*, where each row is a word in a term and each column is a word in a description and each element is the cosine similarity between each term word and description word, respectively.
-We compute the average similarity between each term and description as:
+We compute the average similarity between each term and description as the sum of the maximum similarities across each column and each row:
 
 $$AvgSim = \frac{\sum max(A_i) + \sum max(A_j)}{m+n}$$
 
@@ -14,7 +14,7 @@ We can also compute a weighted average similarity score where:
 
 $$f(x) = tfidf(w)$; $w = \text{a word in a term name or sample description}$$
 
-$$AvgSim_{weighted} = \frac{\sum_{i}^{m}f(t_i)max(\mathbf{A}_i) + \sum_{i}^{n}f(d_j)max(\mathbf{A}_j)}{\sum_{i}^{m}f(t_i) + \sum_{j}^{n}f(d_j)}$$
+$$AvgSim_{weighted} = \frac{\sum_{i}^{m}f(t_i)max(A_i) + \sum_{i}^{n}f(d_j)max(A_j)}{\sum_{i}^{m}f(t_i) + \sum_{j}^{n}f(d_j)}$$
 
 Here, $t_i$ is a word in a term name representing the row $\mathbf{A}_i$ and $d_j$ is a word in a sample description representing the column $\mathbf{A}_j$. This method is termed individual weighting, since we are only weighting a maximum score by the tfidf of each row and column, respectively.
 
