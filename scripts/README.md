@@ -10,11 +10,11 @@ $$AvgSim = \frac{\sum max(A_i) + \sum max(A_j)}{m+n}$$
 ### Weighted similarities
 
 #### Individual
-We can also compute a weighted average similarity score where:
+We can also compute a weighted average similarity score where each of the maximum row and column values are weighted by their respective tfidf where:
 
 $$f(x) = tfidf(w)$; $w = \text{a word in a term name or sample description}$$
 
-$$AvgSim_{weighted} = \frac{\sum_{i}^{m}f(t_i)max(A_i) + \sum_{i}^{n}f(d_j)max(A_j)}{\sum_{i}^{m}f(t_i) + \sum_{j}^{n}f(d_j)}$$
+$$AvgSim_{weighted} = \frac{\sum f(t_i)max(A_i) + \sum f(d_j)max(A_j)}{\sum f(t_i) + \sum f(d_j)}$$
 
 Here, $t_i$ is a word in a term name representing the row $\mathbf{A}_i$ and $d_j$ is a word in a sample description representing the column $\mathbf{A}_j$. This method is termed individual weighting, since we are only weighting a maximum score by the tfidf of each row and column, respectively.
 
