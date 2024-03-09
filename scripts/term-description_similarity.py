@@ -31,9 +31,7 @@ Authors: Parker Hicks
 Date: 2023-12-21
 """
 import sys
-
 sys.path.insert(1, "src")
-
 from tfidf_calculator import TfidfCalculator
 from argparse import ArgumentParser
 from tqdm import tqdm
@@ -43,9 +41,6 @@ import pandas as pd
 import numpy as np
 import time
 import re
-
-
-# TODO: probably should make this a class
 
 
 def underscore_to_colon(w1):
