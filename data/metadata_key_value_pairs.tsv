@@ -1,0 +1,555 @@
+key	value
+sample_env_medium	Not collected
+sample_env_medium	feces
+sample_env_medium	stool
+sample_env_medium	envo:
+sample_env_medium	fecal material
+sample_env_medium	faeces
+sample_env_medium	human stool
+sample_env_medium	envo:feces
+sample_env_medium	feces ethnicity
+sample_env_medium	stool ethnicity
+sample_env_medium	intesitinal biome
+sample_env_medium	fecal
+sample_env_medium	rectal swab
+sample_env_medium	human-associated habitat
+sample_env_medium	feces [envo:]
+sample_env_medium	feces envo:
+sample_env_medium	stool sample
+sample_env_medium	faeces ethnicity indonesian
+sample_env_medium	feces(envo:) ethnicity
+sample_env_medium	human gut microbiome
+sample_env_medium	not applicable
+sample_env_medium	fit buffer
+sample_env_medium	human gastric tissue
+sample_env_medium	intestinal tract
+sample_env_medium	gut
+sample_env_medium	human gut
+sample_env_medium	human faeces
+sample_env_medium	intestine environment
+sample_env_medium	human infant feces
+sample_env_medium	phosphate buffered saline
+sample_env_medium	fecal sample
+sample_env_medium	envo: ethnicity caucasian
+sample_env_medium	fecal samples ethnicity hispanic
+sample_env_medium	.f
+sample_env_medium	organic material
+sample_env_medium	aspirate fluid ethnicity not hispanic/latino
+sample_env_medium	intestinal lumen ethnicity south asian
+sample_env_medium	air
+sample_env_medium	na ethnicity white
+sample_env_medium	duodenal aspirate
+sample_env_medium	colonic tissue
+sample_env_medium	stool fluconazole  gastritis  gentamicin 
+sample_env_medium	rectalswab
+sample_env_medium	hrc
+sample_env_medium	control
+sample_env_medium	tumor
+sample_env_medium	not appicable
+sample_env_medium	vaginal-sample
+sample_env_medium	missing ethnicity asian
+sample_env_medium	vaginal sample
+sample_env_medium	biopsy
+sample_env_medium	aspirate
+sample_env_medium	ethanol
+sample_env_medium	oral catheter secretion
+sample_env_medium	breast milk
+sample_env_medium	biological product
+sample_env_medium	chyme
+sample_env_medium	endotracheal catheter secretion
+sample_env_medium	bronchial brush
+sample_env_medium	rnalater
+sample_env_medium	feces friedchickenfreq  friedchickenquan  friesfreq  friesquan 
+sample_env_medium	tissue
+sample_env_medium	faecal sample
+sample_env_medium	microbiological fermentation medium
+sample_env_medium	.feces
+sample_env_medium	patient 
+sample_env_medium	sigmoid colon mucosal biopsy ethnicity not hispanic or latino
+sample_env_medium	stool sample (from sigmoid colon) ethnicity not hispanic or latino
+sample_env_medium	humanfaeces
+sample_env_medium	oral wash
+sample_env_medium	uberon:
+sample_env_medium	intestine environment ethnicity white
+sample_env_medium	feces.
+sample_env_medium	human intestinal
+sample_env_medium	.sigmoid
+sample_env_medium	frozen at - degree after collection ethnicity asian caucasian hybrid
+sample_env_medium	[envo:]
+sample_env_medium	swab ethnicity kazakh
+sample_env_medium	large intestine ethnicity caucasian
+sample_env_medium	intestinal mucosa ethnicity caucasian
+sample_env_medium	lumen compartment ethnicity mediterranean
+sample_env_medium	mucosa of rectum
+sample_env_medium	empty
+sample_env_medium	fecal ethnicity kazakh
+sample_env_medium	quality control ethnicity none
+sample_env_medium	tissue_
+sample_env_medium	mucosa
+sample_env_medium	lab reagents
+sample_env_medium	stool_
+sample_env_medium	na ethnicity other
+sample_env_medium	na ethnicity na
+sample_env_medium	lumen compartment ethnicity asian
+sample_env_medium	ileal tissue
+sample_env_medium	purified dna
+sample_env_medium	sequencing negative ctrl
+sample_env_medium	water
+sample_env_medium	kit negative ctrl (bm)
+sample_env_medium	envo_
+sample_env_medium	bran ethnicity not collected
+sample_env_medium	kit negative ctrl (oral)
+sample_env_medium	kit negative ctrl (stool)
+sample_env_medium	kit negative ctrl (endo)
+sample_env_medium	quality control ethnicity caucasian
+sample_env_medium	negative control
+sample_env_medium	fecal solid ethnicity not hispanic/latino
+sample_env_medium	pbs
+sample_env_medium	feces friedchickenfreq blank friedchickenquan  friesfreq blank friesquan 
+sample_env_medium	bran ethnicity none
+sample_env_medium	--duodenal aspirate
+sample_env_medium	sequencing positive ctrl
+sample_isolation_source	Not collected
+sample_isolation_source	stool
+sample_isolation_source	feces
+sample_isolation_source	hypopharyngeal
+sample_isolation_source	human stool
+sample_isolation_source	human feces
+sample_isolation_source	gut
+sample_isolation_source	fecal sample
+sample_isolation_source	terminalileum biopsy
+sample_isolation_source	fecal material
+sample_isolation_source	tissue
+sample_isolation_source	rectum biopsy
+sample_isolation_source	gut mucosa
+sample_isolation_source	human stool sample
+sample_isolation_source	meconium
+sample_isolation_source	duodenum
+sample_isolation_source	human gut
+sample_isolation_source	subject_
+sample_isolation_source	anal swab
+sample_isolation_source	stomach
+sample_isolation_source	stool samples
+sample_isolation_source	_t
+sample_isolation_source	human rectum
+sample_isolation_source	faecal
+sample_isolation_source	feacal swab
+sample_isolation_source	antral greater curvature
+sample_isolation_source	bacterica
+sample_isolation_source	faecal sample
+sample_isolation_source	intestinal lumen, mucosa, stool
+sample_isolation_source	small intestine
+sample_isolation_source	human colon
+sample_isolation_source	one stool sample
+sample_isolation_source	day_stool_s
+sample_isolation_source	homo sapiens
+sample_isolation_source	antral lesser curvature
+sample_isolation_source	faecal content
+sample_isolation_source	fecal matter
+sample_isolation_source	month_stool_s
+sample_isolation_source	gastric mucosal biopsy
+sample_isolation_source	faecal samples
+sample_isolation_source	gastric fluid
+sample_isolation_source	scope
+sample_isolation_source	rectum
+sample_isolation_source	ibs-d
+sample_isolation_source	ileal biopsy
+sample_isolation_source	appendix
+sample_isolation_source	nursing homes from massachusett
+sample_isolation_source	stool rRNA removal no
+sample_isolation_source	hospital
+sample_isolation_source	feces from zr-
+sample_isolation_source	ileum
+sample_isolation_source	in vitro gut simulation
+sample_isolation_source	enteric gut
+sample_isolation_source	neonatal intensive care unit, diaper
+sample_isolation_source	antrum
+sample_isolation_source	pc__rectal_fecal_matter
+sample_isolation_source	ffpe intestine
+sample_isolation_source	mucosa
+sample_isolation_source	large intestine
+sample_isolation_source	small intestinal fluid
+sample_isolation_source	e_
+sample_isolation_source	cecum biopsy
+sample_isolation_source	hc
+sample_isolation_source	human fecesfroma
+sample_isolation_source	nasal swab
+sample_isolation_source	bronchoalveolar lavage
+sample_isolation_source	oral wash
+sample_isolation_source	body
+sample_isolation_source	gut mycobiota composition of non-celiac gluten wheat sensitivity individual #
+sample_isolation_source	gut n
+sample_isolation_source	gut 
+sample_isolation_source	eczema infant stool
+sample_isolation_source	gut microbiota composition of non-celiac gluten wheat sensitivity individual #
+sample_isolation_source	human fecesfromh
+sample_isolation_source	eczema infant fed breast milk
+sample_isolation_source	healthy infant stool
+sample_isolation_source	healthy infant fed breast milk
+sample_isolation_source	gut mycobiota composition of placebo-responsive individual #
+sample_isolation_source	gut microbiota composition of placebo-responsive individual #
+sample_isolation_source	gut sa
+sample_isolation_source	intestinal mucus
+sample_isolation_source	feces from hbv-
+sample_isolation_source	descendingcolon biopsy
+sample_isolation_source	blank
+sample_isolation_source	ascendingcolon biopsy
+sample_isolation_source	feces from n
+sample_isolation_source	gut sh
+sample_isolation_source	sigmoid biopsy
+sample_isolation_source	sigmoid colon
+sample_isolation_source	fundus
+sample_isolation_source	transversecolon biopsy
+sample_isolation_source	feces from hbt-
+sample_isolation_source	transverse colon
+sample_isolation_source	descending (left-sided) colon
+sample_isolation_source	pcr_blank_control_rep
+sample_isolation_source	ascending (right-sided) colon
+sample_isolation_source	cardia
+sample_isolation_source	negative control
+sample_isolation_source	cecum
+study_collection_method	Not collected
+study_collection_method	stool
+study_collection_method	swab
+sample_samp_mat_process	Not collected
+sample_samp_mat_process	mo-bio power soil kit
+sample_samp_mat_process	micropipet
+sample_samp_mat_process	mobio powersoil 96-well dna kit, 20 min beadbeating retsch
+sample_samp_mat_process	genomic dna isolated using qiagen stool kit followed by illumina miseq amplicon sequencing
+sample_samp_mat_process	unprocessed
+sample_samp_mat_process	snap frozen
+sample_samp_mat_process	dna isolation, 16s v3-v4 amplification, miseq 2 x 300 bp sequencing
+sample_samp_mat_process	dna extraction
+sample_samp_mat_process	no processing applied
+sample_samp_mat_process	zymobiomics dna 96 kit
+sample_samp_mat_process	illumina miseq 16s amplicon sequencing
+sample_samp_mat_process	centrifuged, supernatant removed, frozen -80°c
+sample_samp_mat_process	stools processing device (biomerieux) in combination with qiaamp fast dna stool kit (qiagen)
+sample_samp_mat_process	zymobiomics dna mini kit (zymoresearch)
+sample_samp_mat_process	nucleospin soil kit (macherey-nagel)
+sample_samp_mat_process	stools processing device (biomerieux) in combination with nucleospin soil kit (macherey-nagel)
+sample_samp_mat_process	qiaamp fast dna stool kit (qiagen)
+sample_samp_mat_process	stools processing device (biomerieux) in combination with zymobiomics dna mini kit (zymoresearch)
+sample_samp_mat_process	dneasy powerlyzer powersoil kit (qiagen)
+sample_samp_mat_process	stools processing device (biomerieux) in combination with dneasy powerlyzer powersoil kit (qiagen)
+sample_samp_mat_process	zymobiomics dna microprep kit (cat no.: d4301)
+sample_samp_mat_process	zymo research quick-dna™ fecal/soil microbe. microprep kit (cat.no.: d6012)
+sample_samp_mat_process	processed
+sample_samp_mat_process	homogenisation (stomacher)
+study_env_medium	Not collected
+study_env_medium	feces
+study_env_medium	stool
+study_env_medium	envo:
+study_env_medium	feces ethnicity
+study_env_medium	fecal material
+study_env_medium	stool ethnicity
+study_env_medium	fecal
+study_env_medium	envo:feces
+study_env_medium	faeces
+study_env_medium	not applicable
+study_env_medium	feces envo:
+study_env_medium	human-associated habitat
+study_env_medium	rectal swab
+study_env_medium	feces [envo:]
+study_env_medium	water
+study_env_medium	purified dna
+study_env_medium	intestine environment
+study_env_medium	human gut
+study_env_medium	stool sample
+study_env_medium	air
+study_env_medium	fecal sample
+study_env_medium	biopsy
+study_env_medium	gut
+study_env_medium	aspirate
+study_env_medium	empty
+study_env_medium	duodenal aspirate
+study_env_medium	organic material
+study_env_medium	feces.
+study_env_medium	lumen compartment ethnicity asian
+study_env_medium	lumen compartment ethnicity mediterranean
+study_env_medium	faeces ethnicity indonesian
+study_env_medium	human intestinal
+study_env_medium	--duodenal aspirate
+study_env_medium	not appicable
+study_env_medium	mucosa of rectum
+study_env_medium	feces(envo:) ethnicity
+study_env_medium	rectalswab
+study_env_medium	tissue_
+study_env_medium	na ethnicity na
+study_env_medium	fecal solid ethnicity not hispanic/latino
+study_env_medium	aspirate fluid ethnicity not hispanic/latino
+study_env_medium	stool_
+study_env_medium	[envo:]
+study_env_medium	sigmoid colon mucosal biopsy ethnicity not hispanic or latino
+study_env_medium	envo_
+study_env_medium	swab ethnicity kazakh
+study_env_medium	colonic tissue
+study_env_medium	ileal tissue
+study_env_medium	faecal sample
+study_env_medium	pbs
+study_env_medium	patient 
+study_env_medium	stool fluconazole  gastritis  gentamicin 
+study_env_medium	human gut microbiome
+study_env_medium	hrc
+study_env_medium	microbiological fermentation medium
+study_env_medium	.f
+study_env_medium	humanfaeces
+study_env_medium	mucosa
+study_env_medium	envo: ethnicity caucasian
+study_env_medium	phosphate buffered saline
+study_env_medium	fecal samples ethnicity hispanic
+study_env_medium	stool sample (from sigmoid colon) ethnicity not hispanic or latino
+study_env_medium	fecal ethnicity kazakh
+study_env_medium	na ethnicity other
+study_env_medium	bran ethnicity not collected
+study_env_medium	negative control
+study_env_medium	control
+study_env_medium	human faeces
+study_env_medium	vaginal-sample
+study_env_medium	chyme
+study_env_medium	sequencing positive ctrl
+study_env_medium	oral catheter secretion
+study_env_medium	kit negative ctrl (oral)
+study_env_medium	kit negative ctrl (stool)
+study_env_medium	kit negative ctrl (endo)
+study_env_medium	endotracheal catheter secretion
+study_env_medium	kit negative ctrl (bm)
+study_env_medium	breast milk
+study_env_medium	sequencing negative ctrl
+study_env_medium	vaginal sample
+study_env_medium	rnalater
+study_env_medium	bronchial brush
+study_env_medium	oral wash
+study_env_medium	intesitinal biome
+study_env_medium	missing ethnicity asian
+study_env_medium	tissue
+study_env_medium	feces friedchickenfreq blank friedchickenquan  friesfreq blank friesquan 
+study_env_medium	bran ethnicity none
+study_env_medium	feces friedchickenfreq  friedchickenquan  friesfreq  friesquan 
+study_env_medium	quality control ethnicity caucasian
+study_env_medium	quality control ethnicity none
+study_env_medium	intestinal tract
+study_env_medium	large intestine ethnicity caucasian
+study_env_medium	intestinal mucosa ethnicity caucasian
+study_env_medium	na ethnicity white
+study_env_medium	tumor
+study_env_medium	.feces
+study_env_medium	.sigmoid
+study_env_medium	ethanol
+study_env_medium	lab reagents
+study_env_medium	human infant feces
+study_env_medium	human gastric tissue
+study_env_medium	intestine environment ethnicity white
+study_env_medium	biological product
+study_env_medium	frozen at - degree after collection ethnicity asian caucasian hybrid
+study_env_medium	fit buffer
+study_env_medium	intestinal lumen ethnicity south asian
+study_env_medium	uberon:
+study_env_medium	human stool
+study_samp_collect_device	Not collected
+study_samp_collect_device	swab
+study_samp_collect_device	micropipet
+study_samp_collect_device	fisherbrand commode specimen collection system
+study_samp_collect_device	medical tubes for fecal collection
+study_samp_collect_device	tube
+study_samp_collect_device	fresh frozen or epicentre catch all collection swabs
+study_samp_collect_device	omnigene-gut
+study_samp_collect_device	toilet hat
+study_samp_collect_device	wooden spatula and sterile containers
+study_samp_collect_device	collected in cary-blair medium tubes
+study_samp_collect_device	21g needle into microcentrifuge tube
+study_samp_collect_device	frozen fresh
+study_samp_collect_device	norgen nucleic acid preservation tube
+study_samp_collect_device	omnigen gut tube
+study_samp_collect_device	fecal collection tube
+study_samp_collect_device	zymo dna/rna shield
+study_samp_collect_device	rnalater tube
+study_samp_collect_device	95% ethanol tube
+study_samp_collect_device	negative control
+study_samp_collect_device	biopsy sample b
+study_samp_collect_device	biopsy sample a
+study_samp_collect_device	flexible sigmoidoscopy
+study_samp_collect_device	collected in empty tubes
+study_samp_collect_device	sterile anaerobic container
+study_samp_collect_device	oc fit chek cartridge
+study_samp_collect_device	stool hat or bd bbl culture swab
+study_samp_collect_device	fecal
+study_samp_collect_device	run-off from nasogastric feeding tube
+study_samp_collect_device	commercial containers containing guscn solution
+study_samp_collect_device	balance
+study_samp_collect_device	flushed catheter lumen
+study_samp_collect_device	brushing during colonscopy
+study_samp_collect_device	unprepped flexible sigmoidoscopy
+study_samp_collect_device	biopsy
+study_samp_collect_device	self-collected at home
+study_samp_collect_device	cotton swab
+study_samp_collect_device	sterile glass pots on ward
+study_samp_collect_device	fecal collection bucket
+study_samp_collect_device	cryotube
+study_isolation_source	Not collected
+study_isolation_source	stool
+study_isolation_source	feces
+study_isolation_source	human feces
+study_isolation_source	gut
+study_isolation_source	fecal sample
+study_isolation_source	human stool
+study_isolation_source	tissue
+study_isolation_source	fecal material
+study_isolation_source	stomach
+study_isolation_source	faecal
+study_isolation_source	faecal sample
+study_isolation_source	human gut
+study_isolation_source	anal swab
+study_isolation_source	negative control
+study_isolation_source	pc__rectal_fecal_matter
+study_isolation_source	healthy infant stool
+study_isolation_source	healthy infant fed breast milk
+study_isolation_source	gut mucosa
+study_isolation_source	eczema infant fed breast milk
+study_isolation_source	pcr_blank_control_rep
+study_isolation_source	ascendingcolon biopsy
+study_isolation_source	sigmoid biopsy
+study_isolation_source	transversecolon biopsy
+study_isolation_source	descendingcolon biopsy
+study_isolation_source	gastric mucosal biopsy
+study_isolation_source	cecum biopsy
+study_isolation_source	terminalileum biopsy
+study_isolation_source	rectum biopsy
+study_isolation_source	bronchoalveolar lavage
+study_isolation_source	oral wash
+study_isolation_source	eczema infant stool
+study_isolation_source	human rectum
+study_isolation_source	appendix
+study_isolation_source	small intestine
+study_isolation_source	hospital
+study_isolation_source	intestinal lumen, mucosa, stool
+study_isolation_source	human fecesfromh
+study_isolation_source	human fecesfroma
+study_isolation_source	meconium
+study_isolation_source	gut mycobiota composition of non-celiac gluten wheat sensitivity individual #
+study_isolation_source	gut mycobiota composition of placebo-responsive individual #
+study_isolation_source	gut microbiota composition of non-celiac gluten wheat sensitivity individual #
+study_isolation_source	gut microbiota composition of placebo-responsive individual #
+study_isolation_source	in vitro gut simulation
+study_isolation_source	gut sh
+study_isolation_source	gut sa
+study_isolation_source	gut n
+study_isolation_source	gut 
+study_isolation_source	e_
+study_isolation_source	enteric gut
+study_isolation_source	feacal swab
+study_isolation_source	_t
+study_isolation_source	large intestine
+study_isolation_source	nasal swab
+study_isolation_source	human colon
+study_isolation_source	month_stool_s
+study_isolation_source	ileum
+study_isolation_source	ffpe intestine
+study_isolation_source	subject_
+study_isolation_source	ascending (right-sided) colon
+study_isolation_source	cecum
+study_isolation_source	descending (left-sided) colon
+study_isolation_source	sigmoid colon
+study_isolation_source	transverse colon
+study_isolation_source	rectum
+study_isolation_source	fecal matter
+study_isolation_source	mucosa
+study_isolation_source	ileal biopsy
+study_isolation_source	bacterica
+study_isolation_source	stool samples
+study_isolation_source	homo sapiens
+study_isolation_source	scope
+study_isolation_source	stool rRNA removal no
+study_isolation_source	one stool sample
+study_isolation_source	faecal samples
+study_isolation_source	small intestinal fluid
+study_isolation_source	antral lesser curvature
+study_isolation_source	day_stool_s
+study_isolation_source	nursing homes from massachusett
+study_isolation_source	feces from hbt-
+study_isolation_source	feces from n
+study_isolation_source	feces from hbv-
+study_isolation_source	feces from zr-
+study_isolation_source	hc
+study_isolation_source	ibs-d
+study_isolation_source	hypopharyngeal
+study_isolation_source	neonatal intensive care unit, diaper
+study_isolation_source	human stool sample
+study_isolation_source	antrum
+study_isolation_source	intestinal mucus
+study_isolation_source	faecal content
+study_isolation_source	blank
+study_isolation_source	cardia
+study_isolation_source	gastric fluid
+study_isolation_source	antral greater curvature
+study_isolation_source	body
+study_isolation_source	fundus
+study_isolation_source	duodenum
+sample_samp_collect_device	Not collected
+sample_samp_collect_device	fresh frozen or epicentre catch all collection swabs
+sample_samp_collect_device	omnigene-gut
+sample_samp_collect_device	swab
+sample_samp_collect_device	micropipet
+sample_samp_collect_device	toilet hat
+sample_samp_collect_device	stool hat or bd bbl culture swab
+sample_samp_collect_device	self-collected at home
+sample_samp_collect_device	oc fit chek cartridge
+sample_samp_collect_device	fisherbrand commode specimen collection system
+sample_samp_collect_device	unprepped flexible sigmoidoscopy
+sample_samp_collect_device	cryotube
+sample_samp_collect_device	medical tubes for fecal collection
+sample_samp_collect_device	flushed catheter lumen
+sample_samp_collect_device	wooden spatula and sterile containers
+sample_samp_collect_device	biopsy sample b
+sample_samp_collect_device	biopsy sample a
+sample_samp_collect_device	balance
+sample_samp_collect_device	fecal
+sample_samp_collect_device	collected in empty tubes
+sample_samp_collect_device	flexible sigmoidoscopy
+sample_samp_collect_device	collected in cary-blair medium tubes
+sample_samp_collect_device	fecal collection tube
+sample_samp_collect_device	rnalater tube
+sample_samp_collect_device	95% ethanol tube
+sample_samp_collect_device	omnigen gut tube
+sample_samp_collect_device	zymo dna/rna shield
+sample_samp_collect_device	biopsy
+sample_samp_collect_device	commercial containers containing guscn solution
+sample_samp_collect_device	run-off from nasogastric feeding tube
+sample_samp_collect_device	sterile glass pots on ward
+sample_samp_collect_device	tube
+sample_samp_collect_device	21g needle into microcentrifuge tube
+sample_samp_collect_device	sterile anaerobic container
+sample_samp_collect_device	norgen nucleic acid preservation tube
+sample_samp_collect_device	cotton swab
+sample_samp_collect_device	brushing during colonscopy
+sample_samp_collect_device	frozen fresh
+sample_samp_collect_device	fecal collection bucket
+sample_samp_collect_device	negative control
+sample_collection_method	Not collected
+sample_collection_method	swab
+sample_collection_method	stool
+study_samp_mat_process	Not collected
+study_samp_mat_process	micropipet
+study_samp_mat_process	mo-bio power soil kit
+study_samp_mat_process	dna extraction
+study_samp_mat_process	genomic dna isolated using qiagen stool kit followed by illumina miseq amplicon sequencing
+study_samp_mat_process	stools processing device (biomerieux) in combination with nucleospin soil kit (macherey-nagel)
+study_samp_mat_process	processed
+study_samp_mat_process	unprocessed
+study_samp_mat_process	centrifuged, supernatant removed, frozen -80°c
+study_samp_mat_process	illumina miseq 16s amplicon sequencing
+study_samp_mat_process	dneasy powerlyzer powersoil kit (qiagen)
+study_samp_mat_process	stools processing device (biomerieux) in combination with dneasy powerlyzer powersoil kit (qiagen)
+study_samp_mat_process	stools processing device (biomerieux) in combination with qiaamp fast dna stool kit (qiagen)
+study_samp_mat_process	zymobiomics dna mini kit (zymoresearch)
+study_samp_mat_process	stools processing device (biomerieux) in combination with zymobiomics dna mini kit (zymoresearch)
+study_samp_mat_process	qiaamp fast dna stool kit (qiagen)
+study_samp_mat_process	nucleospin soil kit (macherey-nagel)
+study_samp_mat_process	zymo research quick-dna™ fecal/soil microbe. microprep kit (cat.no.: d6012)
+study_samp_mat_process	zymobiomics dna microprep kit (cat no.: d4301)
+study_samp_mat_process	zymobiomics dna 96 kit
+study_samp_mat_process	no processing applied
+study_samp_mat_process	snap frozen
+study_samp_mat_process	mobio powersoil 96-well dna kit, 20 min beadbeating retsch
+study_samp_mat_process	homogenisation (stomacher)
+study_samp_mat_process	dna isolation, 16s v3-v4 amplification, miseq 2 x 300 bp sequencing
