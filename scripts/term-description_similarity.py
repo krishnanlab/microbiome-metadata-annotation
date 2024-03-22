@@ -287,13 +287,6 @@ if __name__ == "__main__":
         type=str,
     )
     parser.add_argument(
-        "-om",
-        help="Ontology term mappings as tsv file. \
-            File should be formatted as id\tname (i.e. CL:0000024\toogonial cell).",
-        required=True,
-        type=str,
-    )
-    parser.add_argument(
         "-embeddings",
         help="/path/to/embedding_lookup_table.npz storing embeddings for each word across the corpora",
         required=False,
@@ -323,8 +316,7 @@ if __name__ == "__main__":
 
     # Get name of the ontology term id
     term = args.term
-    onto_map = pd.read_csv(Path(args.om), delimiter="\t", header=0, dtype=str)
-    term_name = onto_map[onto_map["id"] == term.replace('_', ':')]["name"].values[0]
+    term_name = term
 
     print("Calculating similarities to %s." % (term))
     sample_similarities = np.zeros((len(corpus)))
