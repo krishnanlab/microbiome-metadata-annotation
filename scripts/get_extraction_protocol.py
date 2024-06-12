@@ -1,24 +1,31 @@
+"""
+This script is used to identify potential extraction protocols from metadata.
+
+Notes
+_________
+1. Metadata fields/keys tend to contain underscores whereas other words in the metadata do not (i.e. samp_mat_process,
+samp_collect_device, env_medium, isolation_source, collection_method). This of course disregards fields denoted by
+single words, however the fields we were interested in contain underscores.
+
+2. Potential fields identified in step 1 are saturated with nonsense entities like filenames (i.e.
+ prw-201_s210_l001_r1_001.fastq.gz) or others with no discernible meaning (kr00325_m1). Since relevant metadata fields
+ tend to not contain numbers, we remove all potential fields identified by step 1 that contain numerical characters.
+
+3. The fields env_medium and isolation_source contain values that are variations of one another
+(i.e. 'feces ethnicity caucasian' vs 'feces ethnicity' vs 'feces [envo:]' vs 'feces envo:'). Each of these values
+indicate that the sample came from feces. Thus, we map each of these values to 'feces'.
+---------
+
+Author: Parker Hicks
+Date: 2024-03-22
+"""
 from argparse import ArgumentParser
+from utils import check_outdir
 from pathlib import Path
 import pandas as pd
 import numpy as np
 import itertools
 import re
-
-
-def df_from_txt(_file: Path) -> pd.DataFrame:
-    """Opens a tab-separated txt file as a pandas dataframe"""
-    lines = list()
-    with open(_file, 'r') as f:
-        for i, line in enumerate(f.readlines()):
-            split_line = line.strip().split('\t')
-            if i == 0:
-                col_names = split_line
-            else:
-                lines.append(split_line)
-    df = pd.DataFrame(lines, columns=col_names)
-
-    return df
 
 
 def samples_with_keyword(
@@ -43,13 +50,22 @@ def split_by_underscore(desc: str) -> np.array:
     return np.array(split_desc)[mask]
 
 
-def remove_elements_with_numbers(input_set):
-    """Removes elements that contain numerical characters from a set of strings"""
-    return {element for element in input_set if not any(char.isdigit() for char in element)}
+def get_unique(fields_per_sample: np.array) -> set:
+    print("Finding unique fields.")
+    fields = list()
+    for row in fields_per_sample:
+        fields.extend(row)
+    unique = set(fields)
+    return unique
 
 
-def remove_numericals_from_str(input_string):
-    # Use a regular expression to remove numerical characters
+def remove_elements_with_numbers(input_set: set) -> list:
+    """Removes elements that contain numerical characters from a set of strings."""
+    return list({element for element in input_set if not any(char.isdigit() for char in element)})
+
+
+def remove_numericals_from_str(input_string: str) -> str:
+    """Removes numerical characters from a string."""
     result_string = re.sub(r'\d', '', input_string)
     return result_string
 
@@ -76,11 +92,16 @@ def split_by_field(desc: str, fields: list) -> list:
 
 
 def get_items_after_substring(desc_split: list, substring: str):
-    """Extracts """
+    """ Each metadata field for each sample is split as follows: ['field1 values', 'field2 values', ..., 'fieldn
+    values']. This function extracts values for a given metadata field.
+
+    :param desc_split: a description for a single sample split as ['field1 values', ..., 'fieldn values']
+    :param substring: the name of a metadata field to extract values for
+    """
     desc_split = np.array(desc_split)
     arr_mask = np.where(np.char.find(desc_split, substring) != -1)[0]
     if arr_mask.shape[0] == 0:
-        return ''
+        return ''   # Field not present in the description
     desc_at_substring = desc_split[arr_mask].item()
     index = desc_at_substring.find(substring)
     if index == -1:
@@ -89,20 +110,112 @@ def get_items_after_substring(desc_split: list, substring: str):
         return " ".join(desc_at_substring[index + len(substring):].split()).strip()
 
 
-def merge_na(protocol: str, na_values: list) -> str:
-    if protocol in na_values:
+def merge_na(val: str, na_values: list) -> str:
+    """NaN values are described by multiple entities. This function sets any values in na_values to 'Not collected'.
+
+    :param val: the value of a particular metadata field
+    :param na_values: entities that describe Nan (i.e. nan, not collected, N/A, etc.)
+    """
+    if val in na_values:
         return "Not collected"
     else:
-        return protocol
+        return val
 
 
-def merge_by_keywords(protocol: str, keyword: str) -> str:
-    pattern = keyword
-    match = re.search(pattern, protocol)
+def merge_by_keywords(val: str, kwd: str) -> str:
+    """Assigns a word/phrase to common term if the word is in the term.
+
+    :param val: a word or phrase
+    :param kwd: the common term found between words or phrases
+    :return: the common term if found in val, else val
+    """
+    match = re.search(kwd, val)
     if match:
-        return keyword
+        return kwd
     else:
-        return protocol
+        return val
+
+def main(
+        metadata_file: str,
+        myFields_file: str,
+        outdir: str,
+):
+    # Set paths
+    meta_path = Path(metadata_file)
+    myFields_path = Path(myFields_file)
+    outdir = check_outdir(outdir)
+
+    # Load data
+    metadata_df = pd.read_csv(meta_path, sep='\t')
+    myFields = np.loadtxt(myFields_path, dtype=str)
+
+    # Extract potential metadata fields
+    metadata_df["fields"] = metadata_df['metadatablob'].apply(split_by_underscore)
+    fields_per_sample = metadata_df["fields"].to_numpy()
+
+    # Get set of unique metadata fields
+    print("Finding unique fields.")
+    fields = get_unique(fields_per_sample)
+    fields_num_rm = remove_elements_with_numbers(fields)
+
+    # Collect all potential fields
+    if args.sf:
+        np.savetxt(outdir / 'potential_fields.txt', fields_num_rm, fmt='%s')
+
+    # Split the metadata into list of fields
+    print("Splitting descriptions.")
+    splitters = fields_num_rm
+    metadata_df["meta_split"] = metadata_df["metadatablob"].apply(
+        split_by_field,
+        fields=splitters
+    )
+
+    # Extract values from specified fields
+    for field in myFields:
+        print(f'\nExtracting {field}.')
+        metadata_df[field] = metadata_df['meta_split'].apply(
+            get_items_after_substring,
+            substring=field
+        )
+
+        # See Note 3
+        if field in ['env_medium', 'isolation_source']:
+            metadata_df[field] = metadata_df[field].apply(remove_numericals_from_str)
+
+            kwds = [
+                'feces',
+                'stool',
+                'fecal',
+                'not applicable',
+                'rectal swab',
+                'hrc',
+            ]   # The most informative keywords determined via manual inspection
+            for kwd in kwds:
+                metadata_df[field] = metadata_df[field].apply(
+                    merge_by_keywords,
+                    kwd=kwd
+                )
+
+        # Change protocols where values in na_values to 'Not collected'
+        na_values = [' ', '', 'not applicable', 'not collected', 'none', 'missing', 'n/a', 'na']
+        metadata_df[f'{field}_naMerged'] = metadata_df[field].apply(
+            merge_na,
+            na_values=na_values
+        )
+
+        # Filter for unique extraction protocols for project ids
+        study_df = metadata_df[["project", f"{field}_naMerged"]].drop_duplicates()
+
+        # Get unique protocol counts and save to tsv
+        print(f"Saving file for {field}.")
+        sample_outfile = outdir / f'sample_{field}.tsv'
+        study_outfile = outdir / f'study_{field}.tsv'
+
+        sample_protocol_counts = metadata_df[f"{field}_naMerged"].value_counts()
+        sample_protocol_counts.to_csv(sample_outfile, sep='\t')
+
+        study_protocol_counts = study_df[f"{field}_naMerged"].value_counts()
+        study_protocol_counts.to_csv(study_outfile, sep='\t')
 
 
 if __name__ == '__main__':
@@ -110,6 +223,12 @@ if __name__ == '__main__':
     parser.add_argument(
         '-metadata',
         help='/path/to/metadata as a tab separated txt or tsv file with header names',
+        required=True,
+        type=str,
+    )
+    parser.add_argument(
+        '-myFields',
+        help='/path/to/file.txt containing fields for which to extract values from the metadata',
         required=True,
         type=str,
     )
@@ -126,79 +245,8 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
 
-    # Set outdir
-    outdir = Path(args.outdir)
-    if not outdir.exists():
-        outdir.mkdir(parents=True)
-
-    # Load data
-    meta_path = Path(args.metadata)
-    metadata_df = df_from_txt(meta_path)
-
-    # Extract potential metadata fields
-    metadata_df["fields"] = metadata_df['metadatablob'].apply(split_by_underscore)
-    fields_per_sample = metadata_df["fields"].to_numpy()
-
-    # Get set of unique metadata fields
-    print("Finding unique fields.")
-    fields = list()
-    for row in fields_per_sample:
-        fields.extend(row)
-    fields = set(fields)
-    fields_num_rm = remove_elements_with_numbers(fields)
-
-    # Collect all potential fields
-    if args.sf:
-        with open(outdir / 'potential_fields.txt', 'w') as f:
-            for field in fields_num_rm:
-                f.write(f'{field}\n')
-
-    # Split the metadata into list of fields
-    print("Splitting descriptions.")
-    splitters = list(fields_num_rm)
-    metadata_df["meta_split"] = metadata_df["metadatablob"].apply(
-        split_by_field,
-        fields=splitters
+    main(
+        args.metadata,
+        args.myFields,
+        args.outdir,
     )
-
-    keys_to_look_for = [
-        "samp_mat_process",
-        "samp_collect_device",
-        "env_medium",
-        "isolation_source",
-        "collection_method"
-    ]
-
-    for key in keys_to_look_for:
-        print(f"Extracting {key}.")
-        metadata_df[key] = metadata_df["meta_split"].apply(
-            get_items_after_substring,
-            substring=key
-        )
-
-        # Change protocols where values in na_values to 'Not collected'
-        na_values = [" ", "", "not applicable", "not collected", "none", "missing", 'n/a', 'na']
-        metadata_df[f"{key}_naMerged"] = metadata_df[key].apply(
-            merge_na,
-            na_values=na_values
-        )
-
-        if key in ['env_medium', 'isolation_source']:
-            metadata_df[f'{key}_naMerged'] = metadata_df[f'{key}_naMerged'].apply(remove_numericals_from_str)
-
-            kwds = ['feces ethnicity', 'stool ethnicity', 'fecal material', 'not applicable', 'rectal swab', 'hrc']
-            for kwd in kwds:
-                metadata_df[f'{key}_naMerged'] = metadata_df[f'{key}_naMerged'].apply(merge_by_keywords, keyword=kwd)
-
-        study_df = metadata_df[["project", f"{key}_naMerged"]].drop_duplicates()
-
-        # Get unique protocol counts and save to tsv
-        print(f"Saving file for {key}.")
-        sample_outfile = outdir / f'sample_{key}_counts.tsv'
-        study_outfile = f'study_{key}_counts.tsv'
-
-        sample_protocol_counts = metadata_df[f"{key}_naMerged"].value_counts()
-        sample_protocol_counts.to_csv(sample_outfile, sep='\t')
-
-        study_protocol_counts = study_df[f"{key}_naMerged"].value_counts()
-        study_protocol_counts.to_csv(study_outfile, sep='\t')
