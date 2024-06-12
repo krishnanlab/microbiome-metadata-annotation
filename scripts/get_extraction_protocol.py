@@ -29,8 +29,8 @@ import re
 
 
 def samples_with_keyword(
-        desc: str,
-        kwd: str,
+    desc: str,
+    kwd: str,
 ) -> int:
     """Marks descriptions that contain a keyword as 1 and 0 if the word is not present."""
     cond = 0
@@ -41,10 +41,10 @@ def samples_with_keyword(
 
 def split_by_underscore(desc: str) -> np.array:
     """Splits a string into a list of elements that contain underscores."""
-    split_desc = desc.split(' ')
+    split_desc = desc.split(" ")
     mask = list()
     for i, word in enumerate(split_desc):
-        if '_' in word:
+        if "_" in word:
             mask.append(i)
 
     return np.array(split_desc)[mask]
@@ -61,12 +61,18 @@ def get_unique(fields_per_sample: np.array) -> set:
 
 def remove_elements_with_numbers(input_set: set) -> list:
     """Removes elements that contain numerical characters from a set of strings."""
-    return list({element for element in input_set if not any(char.isdigit() for char in element)})
+    return list(
+        {
+            element
+            for element in input_set
+            if not any(char.isdigit() for char in element)
+        }
+    )
 
 
 def remove_numericals_from_str(input_string: str) -> str:
     """Removes numerical characters from a string."""
-    result_string = re.sub(r'\d', '', input_string)
+    result_string = re.sub(r"\d", "", input_string)
     return result_string
 
 
@@ -81,18 +87,15 @@ def split_by_field(desc: str, fields: list) -> list:
     regex = r"(.)(?={})".format("|".join(re.escape(field) for field in fields))
     split_desc = re.split(regex, desc)
     split_desc_filled = [
-        "".join(x) for x in itertools.zip_longest(
-            split_desc[::2],
-            split_desc[1::2],
-            fillvalue=''
-        )
+        "".join(x)
+        for x in itertools.zip_longest(split_desc[::2], split_desc[1::2], fillvalue="")
     ]
 
     return split_desc_filled
 
 
 def get_items_after_substring(desc_split: list, substring: str):
-    """ Each metadata field for each sample is split as follows: ['field1 values', 'field2 values', ..., 'fieldn
+    """Each metadata field for each sample is split as follows: ['field1 values', 'field2 values', ..., 'fieldn
     values']. This function extracts values for a given metadata field.
 
     :param desc_split: a description for a single sample split as ['field1 values', ..., 'fieldn values']
@@ -101,13 +104,13 @@ def get_items_after_substring(desc_split: list, substring: str):
     desc_split = np.array(desc_split)
     arr_mask = np.where(np.char.find(desc_split, substring) != -1)[0]
     if arr_mask.shape[0] == 0:
-        return ''   # Field not present in the description
+        return ""  # Field not present in the description
     desc_at_substring = desc_split[arr_mask].item()
     index = desc_at_substring.find(substring)
     if index == -1:
         return None  # Substring not found
     else:
-        return " ".join(desc_at_substring[index + len(substring):].split()).strip()
+        return " ".join(desc_at_substring[index + len(substring) :].split()).strip()
 
 
 def merge_na(val: str, na_values: list) -> str:
@@ -135,10 +138,11 @@ def merge_by_keywords(val: str, kwd: str) -> str:
     else:
         return val
 
+
 def main(
-        metadata_file: str,
-        myFields_file: str,
-        outdir: str,
+    metadata_file: str,
+    myFields_file: str,
+    outdir: str,
 ):
     # Set paths
     meta_path = Path(metadata_file)
@@ -146,11 +150,11 @@ def main(
     outdir = check_outdir(outdir)
 
     # Load data
-    metadata_df = pd.read_csv(meta_path, sep='\t')
+    metadata_df = pd.read_csv(meta_path, sep="\t")
     myFields = np.loadtxt(myFields_path, dtype=str)
 
     # Extract potential metadata fields
-    metadata_df["fields"] = metadata_df['metadatablob'].apply(split_by_underscore)
+    metadata_df["fields"] = metadata_df["metadatablob"].apply(split_by_underscore)
     fields_per_sample = metadata_df["fields"].to_numpy()
 
     # Get set of unique metadata fields
@@ -160,47 +164,52 @@ def main(
 
     # Collect all potential fields
     if args.sf:
-        np.savetxt(outdir / 'potential_fields.txt', fields_num_rm, fmt='%s')
+        np.savetxt(outdir / "potential_fields.txt", fields_num_rm, fmt="%s")
 
     # Split the metadata into list of fields
     print("Splitting descriptions.")
     splitters = fields_num_rm
     metadata_df["meta_split"] = metadata_df["metadatablob"].apply(
-        split_by_field,
-        fields=splitters
+        split_by_field, fields=splitters
     )
 
     # Extract values from specified fields
     for field in myFields:
-        print(f'\nExtracting {field}.')
-        metadata_df[field] = metadata_df['meta_split'].apply(
-            get_items_after_substring,
-            substring=field
+        print(f"\nExtracting {field}.")
+        metadata_df[field] = metadata_df["meta_split"].apply(
+            get_items_after_substring, substring=field
         )
 
         # See Note 3
-        if field in ['env_medium', 'isolation_source']:
+        if field in ["env_medium", "isolation_source"]:
             metadata_df[field] = metadata_df[field].apply(remove_numericals_from_str)
 
             kwds = [
-                'feces',
-                'stool',
-                'fecal',
-                'not applicable',
-                'rectal swab',
-                'hrc',
-            ]   # The most informative keywords determined via manual inspection
+                "feces",
+                "stool",
+                "fecal",
+                "not applicable",
+                "rectal swab",
+                "hrc",
+            ]  # The most informative keywords determined via manual inspection
             for kwd in kwds:
                 metadata_df[field] = metadata_df[field].apply(
-                    merge_by_keywords,
-                    kwd=kwd
+                    merge_by_keywords, kwd=kwd
                 )
 
         # Change protocols where values in na_values to 'Not collected'
-        na_values = [' ', '', 'not applicable', 'not collected', 'none', 'missing', 'n/a', 'na']
-        metadata_df[f'{field}_naMerged'] = metadata_df[field].apply(
-            merge_na,
-            na_values=na_values
+        na_values = [
+            " ",
+            "",
+            "not applicable",
+            "not collected",
+            "none",
+            "missing",
+            "n/a",
+            "na",
+        ]
+        metadata_df[f"{field}_naMerged"] = metadata_df[field].apply(
+            merge_na, na_values=na_values
         )
 
         # Filter for unique extraction protocols for project ids
@@ -208,40 +217,40 @@ def main(
 
         # Get unique protocol counts and save to tsv
         print(f"Saving file for {field}.")
-        sample_outfile = outdir / f'sample_{field}.tsv'
-        study_outfile = outdir / f'study_{field}.tsv'
+        sample_outfile = outdir / f"sample_{field}.tsv"
+        study_outfile = outdir / f"study_{field}.tsv"
 
         sample_protocol_counts = metadata_df[f"{field}_naMerged"].value_counts()
-        sample_protocol_counts.to_csv(sample_outfile, sep='\t')
+        sample_protocol_counts.to_csv(sample_outfile, sep="\t")
 
         study_protocol_counts = study_df[f"{field}_naMerged"].value_counts()
-        study_protocol_counts.to_csv(study_outfile, sep='\t')
+        study_protocol_counts.to_csv(study_outfile, sep="\t")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument(
-        '-metadata',
-        help='/path/to/metadata as a tab separated txt or tsv file with header names',
+        "-metadata",
+        help="/path/to/metadata as a tab separated txt or tsv file with header names",
         required=True,
         type=str,
     )
     parser.add_argument(
-        '-myFields',
-        help='/path/to/file.txt containing fields for which to extract values from the metadata',
+        "-myFields",
+        help="/path/to/file.txt containing fields for which to extract values from the metadata",
         required=True,
         type=str,
     )
     parser.add_argument(
-        '-outdir',
+        "-outdir",
         help="Path to save dataframes in",
         required=True,
         type=str,
     )
     parser.add_argument(
-        '--sf',
+        "--sf",
         help="Use to save the extracted fields as a txt file",
-        action='store_true',
+        action="store_true",
     )
     args = parser.parse_args()
 
