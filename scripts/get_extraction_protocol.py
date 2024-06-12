@@ -143,6 +143,7 @@ def main(
     metadata_file: str,
     myFields_file: str,
     outdir: str,
+    save_fields: bool,
 ):
     # Set paths
     meta_path = Path(metadata_file)
@@ -163,7 +164,7 @@ def main(
     fields_num_rm = remove_elements_with_numbers(fields)
 
     # Collect all potential fields
-    if args.sf:
+    if save_fields:
         np.savetxt(outdir / "potential_fields.txt", fields_num_rm, fmt="%s")
 
     # Split the metadata into list of fields
@@ -258,4 +259,5 @@ if __name__ == "__main__":
         args.metadata,
         args.myFields,
         args.outdir,
+        args.sf,
     )
