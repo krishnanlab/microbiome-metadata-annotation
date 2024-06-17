@@ -9,7 +9,7 @@ Date: 2023-07
 """
 from transformers import AutoTokenizer, AutoModel
 from timeit import default_timer as timer
-from utils import (check_stem_true_false, check_lemmatize_true_false)
+from utils import check_stem_true_false, check_lemmatize_true_false
 from itertools import chain
 from pathlib import Path
 from tqdm import tqdm

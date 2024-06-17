@@ -336,4 +336,3 @@ if __name__ == "__main__":
     outfile = Path(args.outdir) / f"{term}.npz"
     print("Saving file %s" % (outfile))
     np.savez(outfile, similarity=sample_similarities, gsms=gsms)
-     
