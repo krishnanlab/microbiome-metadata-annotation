@@ -40,15 +40,6 @@ from tqdm import tqdm
 from pathlib import Path
 import numpy as np
 import time
-import re
-
-
-def underscore_to_colon(w1):
-    if "_" in w1:
-        w2 = re.sub("_", ":", w1)
-    else:
-        w2 = w1
-    return w2
 
 
 def array_sum(_a: np.array, _b: np.array) -> float:
@@ -74,13 +65,13 @@ def mask_tfidf(split_term, split_desc, tfidf_word_features, tfidf) -> np.array:
 
     for word in split_term:
         if word not in word_features:
-            # Word not in tfidf_word_features, add it with value 0
+            # Word not in tfidf word features, add it with value 0
             word_features = np.append(word_features, word)
             tfidf_ = np.append(tfidf_, 0)  # Append 0 to tfidf vector
 
     for word in split_desc:
         if word not in word_features:
-            # Word not in tfidf_word_features, add it with value 0
+            # Word not in tfidf word features, add it with value 0
             word_features = np.append(word_features, word)
             tfidf_ = np.append(tfidf_, 0)  # Append 0 to tfidf vector
 
