@@ -112,7 +112,7 @@ def main(
 
     # Normalize the prediction scores
     print("Normalizing scores by %s." % (transform))
-    normalized_scores = normalize_scores(scores, normalization=transform)
+    normalized_scores = normalize_scores(scores, transform)
 
     # Save aggregate scores
     outdir = check_outdir(outdir)
