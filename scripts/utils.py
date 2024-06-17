@@ -17,6 +17,14 @@ def check_outdir(path_: str) -> Path:
     return outdir
 
 
+def underscore_to_colon(w1):
+    if "_" in w1:
+        w2 = re.sub("_", ":", w1)
+    else:
+        w2 = w1
+    return w2
+
+
 def check_stem_true_false(filename):
     pattern = r"stem-(True|False)_"
     match = re.search(pattern, filename)
