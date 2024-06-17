@@ -1,6 +1,4 @@
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-import numpy as np
-from collections import Counter
 
 
 class TfidfCalculator:
