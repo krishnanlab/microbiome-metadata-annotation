@@ -38,14 +38,9 @@ from tfidf_calculator import TfidfCalculator
 from argparse import ArgumentParser
 from tqdm import tqdm
 from pathlib import Path
-from typing import Tuple
-import pandas as pd
 import numpy as np
 import time
 import re
-
-
-# TODO: probably should make this a class
 
 
 def underscore_to_colon(w1):
@@ -56,15 +51,12 @@ def underscore_to_colon(w1):
     return w2
 
 
-def row_col_total(max_rows, max_cols):
-    # Add maximum values
-    total = 0
-    for i in max_rows:
-        total += i
-    for j in max_cols:
-        total += j
-
-    return total
+def array_sum(_a: np.array, _b: np.array) -> float:
+    """Computes the sum of maximum values across all rows and columns of a matrix."""
+    # For testing
+    print(_a.shape)
+    print(_b.shape)
+    return np.sum(_a) + np.sum(_b)
 
 
 def mask_tfidf(split_term, split_desc, tfidf_word_features, tfidf) -> np.array:
@@ -112,7 +104,7 @@ def avg_similarity(max_rows: np.array, max_cols: np.array) -> float:
     :param max_cols: a vector of maximum similarity values from the
         columns of a (term words) x (description words) matrix
     """
-    total = row_col_total(max_rows, max_cols)
+    total = array_sum(max_rows, max_cols)
     avg_sample_sim = total / (len(max_rows) + len(max_cols))
 
     return avg_sample_sim
@@ -150,7 +142,7 @@ def weighted_avg_similarity(
         )
 
     # Average by the total tfidf for all words in sample description and term name
-    total = row_col_total(max_rows_weighted, max_cols_weighted)
+    total = array_sum(max_rows_weighted, max_cols_weighted)
     total_tfidf = np.sum(tfidf_term) + np.sum(tfidf_desc)
     avg_sample_sim = total / total_tfidf
 
@@ -227,11 +219,12 @@ def compute_similarity(
     :param description: A sample description as a single string
     :param words: Array of word columns from the embedding lookup table
     :param similarity_mat: words x words matrix of similarity values between each word embedding
+    :param weight: which weighting schema to use
     :param tfidf: if score is weighted, it requires a tfidf vector for a sample
     :param tfidf_word_features: words associated with each element of the tfidf vector
     """
 
-    # Split into individual words and sort alphebetically
+    # Split into individual words and sort alphabetically
     split_desc = np.sort(np.unique(np.array(description.split(" "))))
     split_term = np.sort(np.unique(np.array(term_name.split(" "))))
 
