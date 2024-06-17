@@ -321,7 +321,7 @@ if __name__ == "__main__":
         word_features = tfidf_calculator.get_word_features()
 
         for i, desc in tqdm(
-            enumerate(corpus), total=len(corpus), desc="Generating sample rankings..."
+            enumerate(corpus), total=len(corpus), desc="Generating sample similarities..."
         ):
             sample_tfidf = tfidf[i, :]
             sample_similarities[i] = compute_similarity(
