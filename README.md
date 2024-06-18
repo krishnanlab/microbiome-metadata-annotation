@@ -24,3 +24,29 @@ age – available from tags such as "host_age", "age", "age (months)", etc. Infe
 sex – available via "sex", "host_sex", "gender_cat", etc.
 study group – we have a few different ideas for how to label a "case" and a "control" in each project, and tags like "control", "study_arm" and "treatmentgroup" do have some of this already.
 Ideally, one day we hope to label samples with more specific information about disease status—whether the host has diabetes/cancer/IBS and so on.
+
+
+## 0. Identify potential extraction protocols from sample metadata
+
+```python
+python get_extraction_protocol.py \
+       -metadata ../data/metadata_blobs.txt \
+       -myFields ../data/myFields.txt \
+       -outdir ../data/counts \
+       --sf
+```
+
+#### Inputs:
+- metadata
+  - a tab separated file with columns `sample`, `project`,`metadatablob`.
+    - `sample`: a sample ID
+    - `project`: a project or study ID
+    - `metadatablob`: a description for a given sample ID
+- myFields
+  - a `.txt` file defining metadata fields that could contain extraction protocols
+- outdir
+- sf
+  - if this flag is used, all potential metadata fields will be saved to `data/potential_fields.txt`
+
+#### Outputs:
+`outdir/<sample or study>_<field>.csv` for field in `myFields.txt`
