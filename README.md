@@ -9,15 +9,16 @@ Say we have an ontology term of three words {t1, t2, t3} and a sample descriptio
 it to also with 3 words {s1, s2, s3}. We compute the cosine similarity of the embedding vectors of each
 word to each other to get a similarity score cos_sim[i, j] for every term word ti and description word sj.
 
-     s1  s2  s3  | max
-   ______________|____
-t1|  0.5 0.4 0.1 | 0.5
-  |              |
-t2|  0.2 0.9 0.1 | 0.9
-  |              |
-t3|  0.7 0.3 0.7 | 0.7
-__|______________|
-max  0.7 0.9 0.7
+    s1    s2    s3  |  max
+   __________________|____
+t1 | 0.5  0.4  0.1 | 0.5
+   |                 |
+t2 | 0.2  0.9  0.1 | 0.9
+   |                 |
+t3 | 0.7  0.3  0.7 | 0.7
+   |_________________|
+    max  0.7  0.9  0.7
+
 
 
 The overall similarity between the ontology term name (t) and the sample description (s) is computed by
