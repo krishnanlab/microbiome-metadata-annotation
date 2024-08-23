@@ -1,8 +1,7 @@
 # microbiome-annotation
-Training text-based ML models to predict protocols for microbiome samples
+This repository includes scripts for performing semantic search to identify and annotate text snippets (from PubMed manuscripts) with a predefined set of terms (in this case, microbiome extraction kits).
 
-## Project notes from collaborators
-Thanks again for meeting with us yesterday. The data file we discussed is attached. The columns, separated by tabs:
+## Project notes from collaborato
 sample – the BioSample accession for the sample described in that row
 project – the accession of the BioProject associated with the sample
 instrument – the sequencing instrument field reported to BioSample
