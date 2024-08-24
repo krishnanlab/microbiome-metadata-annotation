@@ -2,16 +2,15 @@
 This repository includes scripts for performing semantic search to identify and annotate text snippets (from PubMed manuscripts) with a predefined set of terms (in this case, microbiome extraction kits).
 
 ## Method
-we developed a semantic matching approach to compute similarity scores between each description and a list of known extraction kits. We began by generating word embeddings using PubMedBERT [cite] for both the extraction kits and descriptions. A similarity matrix was constructed where rows correspond to the words in the extraction kit and columns correspond to the words in the description. For each matrix, we calculated the maximum cosine similarity value across all rows and columns. These maximum values were then weighted by the TF-IDF scores of the corresponding words to account for the importance of each word in the context of the overall corpus, ensuring that more relevant terms had a greater impact on the similarity score. The weighted maximum values were averaged to produce a single similarity score for each extraction kit-description pair, resulting in a weighted similarity matrix. To ensure comparability across all extraction kits and descriptions, we applied z-transformation across both columns and rows of this weighted similarity matrix. Each description was then annotated with the extraction kit that had the highest normalized similarity score. To ensure accuracy, we manually reviewed the descriptions with very low similarity scores by sorting and examining the last 10-20 percent of the least similar cases.
-
+we developed a semantic matching approach to identify the presence of the names of extraction kits within these descriptions. Given an extraction kit name (with n words) and a study description (from the literature; with m words), for each kit word ei in {e1, e2, ..., en}, we recorded its similarity to the closest study word among {d1, d2, ..., dm}. Similarly, for each study word dj, we recorded its similarity to the closest kit word. Similarity between a pair of words was defined as the cosine similarity between their word embeddings generated using BioMedBERT. The overall similarity of the kit-study pair was calculated by averaging these best word-pair similarities, weighted by each word’s “informativeness” (quantified using its term-frequency inverse document frequency; TF-IDF).  Finally, we used the Stouffer’s z-score method to correct the similarity score for each kit-study pair to account for background signals. Specifically, the corrected kit-study score is a combination of two z-scores of the original similarity score calculated based on the 𝜇 and 𝜎 of two distributions: that kit’s similarity to all studies and that study’s similarity to all kits. Finally, each study description was annotated to the extraction kit with which it had the highest corrected similarity score.
 ### Example
-Consider an ontology term with three words `{t1, t2, t3}` and a sample description with three words `{s1, s2, s3}`. We compute the cosine similarity of the embedding vectors for each pair of words to create the following similarity matrix:
+Consider an ontology term with three words `{e1, e2, e3}` and a sample description with three words `{d1, d2, d3}`. We compute the cosine similarity of the embedding vectors for each pair of words to create the following similarity matrix:
 
-|       | **s1** | **s2** | **s3** | **max** |
+|       | **d1** | **d2** | **d3** | **max** |
 |-------|--------|--------|--------|---------|
-| **t1** | 0.5    | 0.4    | 0.1    | 0.5     |
-| **t2** | 0.2    | 0.9    | 0.1    | 0.9     |
-| **t3** | 0.7    | 0.3    | 0.7    | 0.7     |
+| **e1** | 0.5    | 0.4    | 0.1    | 0.5     |
+| **e2** | 0.2    | 0.9    | 0.1    | 0.9     |
+| **e3** | 0.7    | 0.3    | 0.7    | 0.7     |
 | **max**| 0.7    | 0.9    | 0.7    |         |
 
 To compute the overall similarity between the ontology term and the sample description, we average the maximum values from both rows and columns:
