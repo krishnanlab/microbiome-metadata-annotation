@@ -45,16 +45,17 @@ python get_extraction_protocol.py \
 #### Outputs:
 `outdir/<sample or study>_<field>.csv` for field in `myFields.txt`
 
-##1. Generating descriptions
+## 1. Generating descriptions
 
-##2. Generation embeddings
-```python embedding_lookup_table.py\
+## 2. Generation embeddings
+```
+python embedding_lookup_table.py\
           -outdir ../data/
 ```
 
-##3. Calculating similarities
+## 3. Calculating similarities
 
-##4. Aggregating results
+## 4. Aggregating results
 ```
 python aggregate_similarities.py\
        -scores_dir ../data/output\
