@@ -46,19 +46,31 @@ python get_extraction_protocol.py \
 `outdir/<sample or study>_<field>.csv` for field in `myFields.txt`
 
 ## 1. Generating descriptions
+- The first step is to download the fulltext of publications given their PubMed IDs or PMIDs.
+
+``` bash download_pubtator_fulltext.sh```
+- The second step is to extract the text snippets that describe the dna extraction kits.
+
+```
+python extract_dna_extraction_kit_text.py \
+           -indir ../data/xml_files \
+           -outdir ../data/extraction_kit_text.tsv
+```
 
 ## 2. Generation embeddings
 ```
-python embedding_lookup_table.py\
+python embedding_lookup_table.py \
           -outdir ../data/
 ```
 
 ## 3. Calculating similarities
 
+```python term_description_similarity.py```
+
 ## 4. Aggregating results
 ```
-python aggregate_similarities.py\
-       -scores_dir ../data/output\
-       -transform double_z\
+python aggregate_similarities.py \
+       -scores_dir ../data/output \
+       -transform double_z \
        -outdir ../data/
 ```
