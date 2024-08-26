@@ -52,9 +52,8 @@ python get_extraction_protocol.py \
 - The second step is to extract the text snippets that describe the dna extraction kits.
 
 ```
-python extract_dna_extraction_kit_text.py \
-           -indir ../data/xml_files \
-           -outdir ../data/extraction_kit_text.tsv
+python retrieve_extraction_kit_text.py \
+
 ```
 
 ## 2. Generation embeddings
