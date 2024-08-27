@@ -3,9 +3,9 @@ import re
 import csv
 import xml.etree.ElementTree as ET
 
-# Define the folder path and output file
-folder_path = '../data/publication_data/pubtator_fulltext'
-output_dir = '../data/publication_data/'
+# path to the xml and output file
+folder_path = '../data/pubtator_fulltext'
+output_dir = '../data/'
 output_file = os.path.join(output_dir, 'extraction_kit_description.tsv')
 
 # Define the words to search for
@@ -27,19 +27,18 @@ def extract_passage_text(passage):
     if text_element is not None:
         passage_text = text_element.text
         if passage_text and not passage_text.endswith('.'):
-            passage_text += '.'  # Ensure a period at the end
+            passage_text += '.'  # Ensure a period at the end to avoid concatenating redundant sentences
         return passage_text
     return ''
 
 # Prepare the output file
 os.makedirs(output_dir, exist_ok=True)
 
-# Write to TSV output file
+# Write the result to a TSV output file
 with open(output_file, 'w', newline='', encoding='utf-8') as tsvfile:
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['PMID', 'Extracted Sentences'])  # Write header
 
-    # Iterate over the XML files in the folder
     for filename in os.listdir(folder_path):
         if filename.endswith('.xml'):
             pmid = filename.split('.')[0]  # Extract PMID from filename
